@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 // import { useSnackbar } from "notistack";
 import React, { useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);

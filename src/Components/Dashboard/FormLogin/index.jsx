@@ -6,7 +6,7 @@ import { useSnackbar } from "notistack";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import * as yup from "yup";
 import { loginAction } from "../../../Redux/Actions/auth";
 import InputField from "../InputField";
@@ -55,7 +55,7 @@ export default function FormLogin() {
   // const handleLogoutSnackbar = () => {
   //   enqueueSnackbar("Logout successfully", { variant: "success" });
   // };
-  const history = useHistory();
+  // const history = useHistory();
   const classes = useStyles();
   // useEffect(() => {
   //   if (UserInfor === null) {
