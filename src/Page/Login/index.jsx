@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import FormLogin from "../../Components/FormLogin";
+import FormLogin from "../../Components/Dashboard/FormLogin";
 
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {

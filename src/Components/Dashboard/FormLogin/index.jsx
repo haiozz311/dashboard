@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import * as yup from "yup";
-import { loginAction } from "../../Redux/Actions/auth";
+import { loginAction } from "../../../Redux/Actions/auth";
 import InputField from "../InputField";
 import PasswordField from "../PasswordField";
 
@@ -52,17 +52,17 @@ export default function FormLogin() {
   const handleShownotistackError = (message) => {
     enqueueSnackbar(message, { variant: "error" });
   };
-  const handleLogoutSnackbar = () => {
-    enqueueSnackbar("Logout successfully", { variant: "success" });
-  };
+  // const handleLogoutSnackbar = () => {
+  //   enqueueSnackbar("Logout successfully", { variant: "success" });
+  // };
   const history = useHistory();
   const classes = useStyles();
-  useEffect(() => {
-    if (UserInfor === null) {
-      handleLogoutSnackbar();
-      history.push("/login");
-    }
-  }, [UserInfor]);
+  // useEffect(() => {
+  //   if (UserInfor === null) {
+  //     handleLogoutSnackbar();
+  //     history.push("/login");
+  //   }
+  // }, [UserInfor]);
   useEffect(() => {
     if (error?.email) {
       handleShownotistackError(error.email);

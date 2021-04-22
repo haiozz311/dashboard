@@ -14864,13 +14864,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .close {
-  float: right;
-  font-size: 1.5rem;
+  /* float: right; */
+  /* font-size: 1.5rem; */
   font-weight: 700;
-  line-height: 1;
-  color: #000;
+  /* line-height: 1; */
+  /* color: #000; */
   text-shadow: 0 1px 0 #fff;
-  opacity: .5;
+  /* opacity: .5; */
 }
 
 .close:hover {
@@ -28772,17 +28772,6 @@ div.tagsinput span.tag a {
 }
 
 /* Navbar */
-.navbar {
-  font-weight: 400;
-  transition: background 0.25s ease;
-  -webkit-transition: background 0.25s ease;
-  -moz-transition: background 0.25s ease;
-  -ms-transition: background 0.25s ease;
-  -webkit-box-shadow: 0px 5px 21px -5px #CDD1E1;
-  -moz-box-shadow: 0px 5px 21px -5px #CDD1E1;
-  box-shadow: 0px 5px 21px -5px #CDD1E1;
-  /* Navbar color variations */
-}
 
 .sidebar-dark .navbar {
   box-shadow: none;
@@ -29847,12 +29836,6 @@ div.tagsinput span.tag a {
 }
 
 @media (max-width: 991px) {
-  .navbar {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
   .navbar .navbar-brand-wrapper {
     width: 55px;
   }

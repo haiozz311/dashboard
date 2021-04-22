@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserAction } from "../../Redux/Actions/UserList";
+import { getAllUserAction } from "../../../Redux/Actions/UserList";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";

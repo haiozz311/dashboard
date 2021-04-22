@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 // import { useSnackbar } from "notistack";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -23,10 +23,10 @@ export default function Header() {
   // const { enqueueSnackbar } = useSnackbar();
 
   const handleLogout = () => {
-    // console.log("logout");
+    // history.push("/login");
     localStorage.clear();
-    // handleLogoutSnackbar();
-    history.push("/login")
+    // 
+    window.location.reload();
   }
   return (
     <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
