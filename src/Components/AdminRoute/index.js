@@ -4,27 +4,20 @@ import { Redirect, Route } from "react-router-dom";
 import AdminTemplate from "../AdminTemplate";
 
 const AdminRoute = ({ component: Component, ...rest }) => {
-  // const { UserInfor } = useSelector((state) => state.Auth);
-
-  // console.log("UserInfor123", UserInfor._id)
-  // if (UserInfor._id) {
-  //   return <Redirect to="/" />;
-  // }
-  // if (!UserInfor) {
-  //   return <Redirect to="/login" />;
-  // }
-  return (
-    <Route
-      {...rest}
-      render={(routeProps) => {
-        return (
-          <AdminTemplate>
-            <Component {...routeProps} />
-          </AdminTemplate>
-        );
-      }}
-    />
-  );
+  const { UserInfor } = useSelector((state) => state.Auth);
+  return <Route {...rest} render={props => (
+    UserInfor ? (
+      <>
+        <AdminTemplate>
+          <Component {...props} />
+        </AdminTemplate>
+      </>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+      }} />
+    )
+  )} />
 };
 // nhận vào component sử dụng Component
 export default AdminRoute;

@@ -11,4 +11,18 @@ axiosClient.interceptors.request.use((config) => {
     console.log("config", config);
     return config;
 })
+
+axiosClient.interceptors.response.use((response) => {
+    if (response.status === 401) {
+        alert("You are not authorized");
+    }
+    return response;
+}, (error) => {
+    if (error.response && error.response.data) {
+        return Promise.reject(error.response.data);
+    }
+    console.log("error", error)
+    return Promise.reject(error.message);
+});
+
 export default axiosClient;

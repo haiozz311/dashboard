@@ -4,10 +4,11 @@ const UserInfor = localStorage.getItem("UserInfor");
 const initialState = {
   UserInfor: UserInfor ? JSON.parse(UserInfor) : null,
   loading: false,
-  errror: false,
+  error: false,
 };
 
-const PageInforReducer = (state = initialState, action) => {
+const Auth = (state = initialState, action) => {
+  console.log("action", action);
   switch (action.type) {
     case type.GET_USER_REQUEST: {
       return { ...state, loading: true, error: false };
@@ -21,11 +22,14 @@ const PageInforReducer = (state = initialState, action) => {
       };
     }
     case type.GET_USER_FAIL: {
-      return { ...state, loading: false, error: true };
+      return { ...state, loading: false, error: action.error };
+    }
+    case type.LOGOUT_USER: {
+      return { ...state, UserInfor: null, loading: false, error: false };
     }
     default:
       return state;
   }
 };
 
-export default PageInforReducer;
+export default Auth;

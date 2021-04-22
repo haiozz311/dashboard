@@ -1,13 +1,44 @@
-import React from "react";
-// import '../../App.css'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+// import { useSnackbar } from "notistack";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 export default function Header() {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClickButton = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseButton = () => {
+    setAnchorEl(null);
+  };
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/")
+  }
+  // const { enqueueSnackbar } = useSnackbar();
+
+  const handleLogout = () => {
+    // console.log("logout");
+    localStorage.clear();
+    // handleLogoutSnackbar();
+    history.push("/login")
+  }
   return (
     <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a className="navbar-brand brand-logo mr-5" href="index.html">
+        <a className="navbar-brand brand-logo mr-5" onClick={() => {
+          handleClick()
+        }}>
           <img src="../images/logo.svg" className="mr-2" alt="logo" />
         </a>
-        <a className="navbar-brand brand-logo-mini" href="index.html">
+        <a className="navbar-brand brand-logo-mini" onClick={() => {
+          handleClick()
+        }}>
           <img src="../images/logo-mini.svg" alt="logo" />
         </a>
       </div>
@@ -42,106 +73,34 @@ export default function Header() {
           </li>
         </ul>
         <ul className="navbar-nav navbar-nav-right">
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link count-indicator dropdown-toggle"
-              id="notificationDropdown"
-              href="#"
-              data-toggle="dropdown"
-            >
-              <i className="icon-bell mx-0" />
-              <span className="count" />
-            </a>
-            <div
-              className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-              aria-labelledby="notificationDropdown"
-            >
-              <p className="mb-0 font-weight-normal float-left dropdown-header">
-                Notifications
-              </p>
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-success">
-                    <i className="ti-info-alt mx-0" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <h6 className="preview-subject font-weight-normal">
-                    Application Error
-                  </h6>
-                  <p className="font-weight-light small-text mb-0 text-muted">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-warning">
-                    <i className="ti-settings mx-0" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <h6 className="preview-subject font-weight-normal">
-                    Settings
-                  </h6>
-                  <p className="font-weight-light small-text mb-0 text-muted">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-info">
-                    <i className="ti-user mx-0" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <h6 className="preview-subject font-weight-normal">
-                    New user registration
-                  </h6>
-                  <p className="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
           <li className="nav-item nav-profile dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              data-toggle="dropdown"
-              id="profileDropdown"
-            >
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickButton}>
               <img src="images/faces/face28.jpg" alt="profile" />
-            </a>
-            <div
-              className="dropdown-menu dropdown-menu-right navbar-dropdown"
-              aria-labelledby="profileDropdown"
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleCloseButton}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              getContentAnchorEl={null}
             >
-              <a className="dropdown-item">
-                <i className="ti-settings text-primary" />
-                Settings
-              </a>
-              <a className="dropdown-item">
-                <i className="ti-power-off text-primary" />
-                Logout
-              </a>
-            </div>
-          </li>
-          <li className="nav-item nav-settings d-none d-lg-flex">
-            <a className="nav-link" href="#">
-              <i className="icon-ellipsis" />
-            </a>
+              <MenuItem onClick={handleCloseButton}>My Profile</MenuItem>
+              <MenuItem onClick={handleCloseButton}>Change Password</MenuItem>
+              <MenuItem onClick={() => {
+                handleLogout()
+              }}>Logout</MenuItem>
+            </Menu>
           </li>
         </ul>
-        <button
-          className="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
-          type="button"
-          data-toggle="offcanvas"
-        >
-          <span className="icon-menu" />
-        </button>
       </div>
     </nav>
   );

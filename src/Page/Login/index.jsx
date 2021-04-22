@@ -6,9 +6,9 @@ import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import FormLogin from "../../Components/FormLogin";
 import { useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import FormLogin from "../../Components/FormLogin";
 
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
@@ -50,17 +50,12 @@ function Copyright() {
 }
 
 export default function Login() {
-  const classes = useStyles();
+  const history = useHistory();
   const { UserInfor } = useSelector((state) => state.Auth);
-  console.log("UserInfor", UserInfor);
-  // if (UserInfor) {
-  //   return <Redirect to="/" />;
-  // } else {
-  //   return <Redirect to="/Login" />;
-  // }
-  if (UserInfor === null) {
-    return <Redirect to="/Login" />;
+  if (UserInfor) {
+    history.push("/");
   }
+  const classes = useStyles();
   return (
     <div className={classes.mainWrapper}>
       <Container component="main" maxWidth="xs">

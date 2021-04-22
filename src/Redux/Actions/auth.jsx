@@ -9,9 +9,7 @@ export const loginAction = (values) => {
     axios
       .post("api/login", values)
       .then((result) => {
-        console.log("token", result.data.token);
         let data = jwt_decode(result.data.token);
-        console.log("parse token", data);
         localStorage.setItem("UserInfor", JSON.stringify(data));
         localStorage.setItem("token", JSON.stringify(result.data.token));
         setToken(result.data.token);
@@ -24,10 +22,18 @@ export const loginAction = (values) => {
         });
       })
       .catch((error) => {
-        console.log("err", error);
         dispatch({
           type: type.GET_USER_FAIL,
+          error,
         });
       });
+  };
+};
+export const logoutAction = () => {
+  return (dispatch) => {
+    localStorage.clear();
+    dispatch({
+      type: type.LOGOUT_USER,
+    });
   };
 };

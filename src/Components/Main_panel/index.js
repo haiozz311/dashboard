@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import Content__wrapper from '../Content__wrapper';
 import Footer from '../Footer';

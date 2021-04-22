@@ -28636,9 +28636,9 @@ div.tagsinput span.tag a {
   color: #fff;
 }
 
-.sidebar .nav:not(.sub-menu) > .nav-item.active {
+/* .sidebar .nav:not(.sub-menu) > .nav-item.active {
   background: #4B49AC;
-}
+} */
 
 .sidebar .nav.sub-menu {
   margin-bottom: 0;
@@ -28896,7 +28896,6 @@ div.tagsinput span.tag a {
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item {
   margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item:last-child {
@@ -29000,10 +28999,6 @@ div.tagsinput span.tag a {
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings i {
   font-size: 1.25rem;
   vertical-align: middle;
-}
-
-.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile {
-  margin-left: .2rem;
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile img {
@@ -30262,6 +30257,7 @@ div.tagsinput span.tag a {
 
 .settings-panel .nav-tabs .nav-item {
   border: none;
+  margin-right:0;
 }
 
 .settings-panel .nav-tabs .nav-item .nav-link {
