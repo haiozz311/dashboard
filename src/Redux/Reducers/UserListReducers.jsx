@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const UserListReducer = (state = initialState, action) => {
-  console.log("Action ne", action);
   switch (action.type) {
     case type.GET_USER_LIST_REQUEST: {
       return { ...state, loading: true, error: false };

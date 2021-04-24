@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const Auth = (state = initialState, action) => {
-  console.log("action", action);
   switch (action.type) {
     case type.GET_USER_REQUEST: {
       return { ...state, loading: true, error: false };

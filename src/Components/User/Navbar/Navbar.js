@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import DehazeIcon from '@material-ui/icons/Dehaze';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +25,6 @@ const useStyles = makeStyles({
 });
 
 export default function Navbar() {
-  const history = useHistory();
   const { UserInfor } = useSelector((state) => state.Auth);
   const classes = useStyles();
   const [toggle, setToggle] = useState(false);

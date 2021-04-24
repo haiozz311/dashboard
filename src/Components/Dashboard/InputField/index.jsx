@@ -4,7 +4,6 @@ import { Controller } from "react-hook-form";
 
 export default function InputField(props) {
   const { name, form, label } = props;
-  console.log("name, form, label", name, form, label);
   const { errors, formState } = form;
   const hasErr = formState.touched[name] && errors[name];
   return (

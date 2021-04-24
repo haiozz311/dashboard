@@ -9,7 +9,6 @@ export const getAllUserAction = () => {
     axios
       .get("api/users")
       .then((result) => {
-        console.log("data", result);
         dispatch({
           type: type.GET_USER_LIST_SUCCESS,
           payload: {
@@ -33,7 +32,6 @@ export const addUserAction = (value) => {
     axios
       .post("api/users/add", value)
       .then((result) => {
-        console.log("data", result);
         dispatch({
           type: type.ADD_USER_SUCCESS,
           payload: {

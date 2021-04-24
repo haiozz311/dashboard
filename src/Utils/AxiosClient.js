@@ -9,7 +9,6 @@ export const setToken = (token) => {
 axiosClient.interceptors.request.use((config) => {
     const token = localStorage.getItem("token") && JSON.parse(localStorage.getItem("token"))
     config.headers.Authorization = `${token}`;
-    console.log("config", config);
     return config;
 })
 
@@ -22,7 +21,6 @@ axiosClient.interceptors.response.use((response) => {
     if (error.response && error.response.data) {
         return Promise.reject(error.response.data);
     }
-    console.log("error", error)
     return Promise.reject(error.message);
 });
 

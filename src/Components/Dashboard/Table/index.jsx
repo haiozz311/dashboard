@@ -33,13 +33,10 @@ export default function BasicTable() {
   }, []);
   const { ListUser, loading } = useSelector((state) => state.UserListReducer);
 
-  console.log("my data", ListUser);
-
   // const handleClose = () => {
   //   setOpen(false);
   // };
   const handleOpenDialog = () => {
-    console.log("open dialog");
     setOpen(true);
   };
   const hanleCanle = (value) => {

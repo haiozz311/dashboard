@@ -42,27 +42,12 @@ export default function FormLogin() {
   };
 
   const { loading, error } = useSelector((state) => state.Auth);
-  const UserInfor = JSON.parse(localStorage.getItem("UserInfor"));
-  console.log("UserInfor", UserInfor);
 
   const { enqueueSnackbar } = useSnackbar();
-  // const handleShownotistack = () => {
-  //   enqueueSnackbar("Login successfully", { variant: "success" });
-  // };
   const handleShownotistackError = (message) => {
     enqueueSnackbar(message, { variant: "error" });
   };
-  // const handleLogoutSnackbar = () => {
-  //   enqueueSnackbar("Logout successfully", { variant: "success" });
-  // };
-  // const history = useHistory();
   const classes = useStyles();
-  // useEffect(() => {
-  //   if (UserInfor === null) {
-  //     handleLogoutSnackbar();
-  //     history.push("/login");
-  //   }
-  // }, [UserInfor]);
   useEffect(() => {
     if (error?.email) {
       handleShownotistackError(error.email);
