@@ -30,7 +30,7 @@ export default function BasicTable() {
 
   useEffect(() => {
     dispatch(getAllUserAction());
-  }, []);
+  }, [dispatch]);
   const { ListUser, loading } = useSelector((state) => state.UserListReducer);
 
   // const handleClose = () => {
