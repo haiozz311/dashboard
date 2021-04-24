@@ -4,9 +4,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 // import { useSnackbar } from "notistack";
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { logoutAction } from '../../../Redux/Actions/auth.jsx';
 
 export default function Header() {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClickButton = (event) => {
@@ -23,10 +26,7 @@ export default function Header() {
   // const { enqueueSnackbar } = useSnackbar();
 
   const handleLogout = () => {
-    // history.push("/login");
-    localStorage.clear();
-    // 
-    window.location.reload();
+    dispatch(logoutAction())
   }
   return (
     <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
