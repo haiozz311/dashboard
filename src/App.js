@@ -11,10 +11,11 @@ import Home from './Components/User/Section/Home';
 function App() {
   return (
     <>
-      <AdminRoute exact path="/" component={Admin} />
+      <UserRoute exact path="/" component={Home} />
+      <AdminRoute exact path="/dashboard" component={Admin} />
       <AdminRoute exact path="/user" component={User} />
       <Route exact path='/login' component={Login} />
-      <UserRoute exact path="/userPage" component={Home} />
+
     </>
   );
 }

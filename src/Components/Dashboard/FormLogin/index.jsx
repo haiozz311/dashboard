@@ -26,13 +26,13 @@ export default function FormLogin() {
       .string()
       .email()
       .required("Please enter your email !!! 😅 😅 😅"),
-    passWord: yup.string().required("Please enter your password !!! 😅 😅 😅"),
+    password: yup.string().required("Please enter your password !!! 😅 😅 😅"),
   });
 
   const form = useForm({
     defaultValues: {
       email: "",
-      passWord: "",
+      password: "",
     },
     resolver: yupResolver(schema),
   });
@@ -75,7 +75,7 @@ export default function FormLogin() {
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       {loading && <LinearProgress />}
       <InputField fullWidth name="email" label="email message" form={form} />
-      <PasswordField fullWidth name="passWord" label="Password" form={form} />
+      <PasswordField fullWidth name="password" label="Password" form={form} />
       {/* <Progress /> */}
       <Button
         type="submit"

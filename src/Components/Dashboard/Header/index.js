@@ -18,7 +18,7 @@ export default function Header() {
   };
   const history = useHistory();
   const handleClick = () => {
-    history.push("/")
+    history.push("/dashboard")
   }
   // const { enqueueSnackbar } = useSnackbar();
 

@@ -1,6 +1,7 @@
 import axios from 'axios'
 const axiosClient = axios.create({
     baseURL: "https://duolingo-v1.herokuapp.com/",
+    // baseURL: "http://localhost:5000/",
 });
 export const setToken = (token) => {
     axiosClient.defaults.headers.common["token"] = token;

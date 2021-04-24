@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -5,6 +6,8 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
+import { useHistory, NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -22,16 +25,17 @@ const useStyles = makeStyles({
 });
 
 export default function Navbar() {
+  const history = useHistory();
+  const { UserInfor } = useSelector((state) => state.Auth);
   const classes = useStyles();
   const [toggle, setToggle] = useState(false);
-  const infor = true
   const handleToggle = () => {
     setToggle(!toggle)
   }
   return (
     <>
       <ul className={toggle ? 'navbar toggle' : 'navbar'}>
-        {infor ? <>
+        {UserInfor ? <>
           <li className="nav-item"><a href="/">Home</a></li>
           <li className="nav-item"><a href="/">Blog</a></li>
           <li className="nav-item"><a href="/">Contact</a></li>
@@ -41,8 +45,8 @@ export default function Navbar() {
           <li className="nav-icon"><a className="icon" href="/"><TwitterIcon /></a></li>
           <li className="nav-icon"><a className="icon" href="/"><LinkedInIcon /></a></li>
         </> : <>
-          <li><a href="/">Login</a></li>
-          <li><a href="/">Register</a></li>
+          <li><NavLink to="/login" >Login</NavLink></li>
+          <li><NavLink to="/login" >Register</NavLink></li>
         </>}
         <li className="close" onClick={() => {
           handleToggle()
