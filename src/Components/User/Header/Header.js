@@ -1,14 +1,26 @@
-import React from 'react'
-import Logo from '../Logo/Logo'
-import Navbar from '../Navbar/Navbar'
-import './Header.css'
-import './mediaQuery.css'
+import React, { useState } from "react";
+import ToolbarComponent from "../Toolbar/Toolbar";
+import DrawerComponent from "../Drawer/Drawer.jsx";
 
 export default function Header() {
+  const [left, setLeft] = useState(false)
+
+  const toggleDrawer = () => {
+    setLeft(false);
+  };
+
+  const openDrawer = () => {
+    setLeft(true);
+  };
   return (
-    <header className="header">
-      <Logo />
-      <Navbar />
-    </header>
-  )
+    <div className="App">
+      <ToolbarComponent openDrawerHandler={openDrawer} />
+      <DrawerComponent
+        left={left}
+        toggleDrawerHandler={toggleDrawer}
+      />
+    </div>
+  );
 }
+
+

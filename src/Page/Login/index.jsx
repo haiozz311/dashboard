@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink, Redirect } from "react-router-dom";
 import FormLogin from "../../Components/Dashboard/FormLogin";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,11 +51,16 @@ function Copyright() {
 
 export default function Login() {
   const history = useHistory();
+  const classes = useStyles();
   const { UserInfor } = useSelector((state) => state.Auth);
   if (UserInfor) {
-    history.push("/");
+    if (UserInfor.userType === "Member") {
+      return <Redirect to="/" />;
+    } else {
+      return <Redirect to="/dashboard" />;
+    }
   }
-  const classes = useStyles();
+
   return (
     <div className={classes.mainWrapper}>
       <Container component="main" maxWidth="xs">
@@ -71,9 +76,9 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <NavLink to="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </NavLink>
             </Grid>
           </Grid>
         </div>

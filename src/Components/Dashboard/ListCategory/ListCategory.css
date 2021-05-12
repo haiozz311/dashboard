@@ -1,0 +1,7 @@
+.cover__button{
+  display: flex;
+  justify-content: space-between;
+}
+.button__right button{
+  margin:0 5px;
+}

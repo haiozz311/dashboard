@@ -45,7 +45,7 @@ export default function Navbar() {
           <li className="nav-icon"><a className="icon" href="/"><LinkedInIcon /></a></li>
         </> : <>
           <li><NavLink to="/login" >Login</NavLink></li>
-          <li><NavLink to="/login" >Register</NavLink></li>
+          <li><NavLink to="/register" >Register</NavLink></li>
         </>}
         <li className="close" onClick={() => {
           handleToggle()

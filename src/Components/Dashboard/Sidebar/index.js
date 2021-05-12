@@ -5,16 +5,46 @@ export default function Sidebar() {
   return (
     <nav className="sidebar sidebar-offcanvas" id="sidebar">
       <ul className="nav">
-        <NavLink className="nav-item" exact to="/" activeClassName="active">
+        <NavLink className="nav-item" exact to="/dashboard"
+
+          activeClassName="active">
           <li className="nav-link" >
             <i className="icon-grid menu-icon" />
             <span className="menu-title">Dashboard</span>
           </li>
         </NavLink>
-        <NavLink className="nav-item" exact to="/user" activeClassName="active">
+        <NavLink className="nav-item" exact to="/dashboard/user" activeClassName="active">
           <li className="nav-link" >
             <i className="icon-layout menu-icon" />
             <span className="menu-title">User</span>
+            <i className="menu-arrow" />
+          </li>
+        </NavLink>
+        <NavLink className="nav-item" exact to="/dashboard/category" activeClassName="active">
+          <li className="nav-link" >
+            <i className="icon-columns menu-icon" />
+            <span className="menu-title">Category</span>
+            <i className="menu-arrow" />
+          </li>
+        </NavLink>
+        <NavLink className="nav-item" exact to="/dashboard/product" activeClassName="active">
+          <li className="nav-link" >
+            <i className="icon-grid-2 menu-icon" />
+            <span className="menu-title">Product</span>
+            <i className="menu-arrow" />
+          </li>
+        </NavLink>
+        <NavLink className="nav-item" exact to="/dashboard/order" activeClassName="active">
+          <li className="nav-link" >
+            <i className="icon-bar-graph menu-icon" />
+            <span className="menu-title">Order</span>
+            <i className="menu-arrow" />
+          </li>
+        </NavLink>
+        <NavLink className="nav-item" exact to="/dashboard/page" activeClassName="active">
+          <li className="nav-link" >
+            <i className="icon-grid-2 menu-icon" />
+            <span className="menu-title">Page</span>
             <i className="menu-arrow" />
           </li>
         </NavLink>
@@ -24,13 +54,6 @@ export default function Sidebar() {
             <span className="menu-title">Form elements</span>
             <i className="menu-arrow" />
           </a>
-          <div className="collapse" id="form-elements">
-            <ul className="nav flex-column sub-menu">
-              <li className="nav-item">
-                <a className="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a>
-              </li>
-            </ul>
-          </div>
         </li>
         <li className="nav-item">
           <a className="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">

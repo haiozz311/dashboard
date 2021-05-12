@@ -5,17 +5,17 @@ import AdminTemplate from "../AdminTemplate";
 
 const AdminRoute = ({ component: Component, ...rest }) => {
   const { UserInfor } = useSelector((state) => state.Auth);
-  if (!UserInfor) {
-    return <Redirect to="/" />;
-  }
-  if (!Object.keys(UserInfor).length) {
-    return <Redirect to="/" />;
-  }
-  if (UserInfor.userType !== "Admin") {
-    return <Redirect to="/" />;
-  }
+  // if (!UserInfor) {
+  //   return <Redirect to="/" />;
+  // }
+  // if (!Object.keys(UserInfor).length) {
+  //   return <Redirect to="/" />;
+  // }
+  // if (UserInfor.userType !== "Admin") {
+  //   return <Redirect to="/" />;
+  // }
   return <Route {...rest} render={props => (
-    UserInfor ? (
+    UserInfor?.userType === "Admin" ? (
       <>
         <AdminTemplate>
           <Component {...props} />

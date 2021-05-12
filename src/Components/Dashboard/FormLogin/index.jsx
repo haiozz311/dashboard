@@ -6,7 +6,6 @@ import { useSnackbar } from "notistack";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router";
 import * as yup from "yup";
 import { loginAction } from "../../../Redux/Actions/auth";
 import InputField from "../InputField";
@@ -41,27 +40,33 @@ export default function FormLogin() {
     await dispatch(loginAction(values));
   };
 
-  const { loading, error } = useSelector((state) => state.Auth);
+
+  const { UserInfor, loading, error } = useSelector((state) => state.Auth);
 
   const { enqueueSnackbar } = useSnackbar();
   const handleShownotistackError = (message) => {
     enqueueSnackbar(message, { variant: "error" });
   };
+  const handleShownotistackSuccess = (message) => {
+    enqueueSnackbar(message, { variant: "success" });
+  };
   const classes = useStyles();
-  useEffect(() => {
-    if (error?.email) {
-      handleShownotistackError(error.email);
-    }
-    if (error?.message) {
-      handleShownotistackError(error.message);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error?.email) {
+  //     handleShownotistackError(error.email);
+  //   }
+  //   if (error?.message) {
+  //     handleShownotistackError(error.message);
+  //   }
+  //   if (UserInfor) {
+  //     handleShownotistackSuccess("login successfully");
+  //   }
+  // }, [error, UserInfor]);
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       {loading && <LinearProgress />}
       <InputField fullWidth name="email" label="email message" form={form} />
       <PasswordField fullWidth name="password" label="Password" form={form} />
-      {/* <Progress /> */}
       <Button
         type="submit"
         className={classes.submit}

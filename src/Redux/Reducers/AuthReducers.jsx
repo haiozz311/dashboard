@@ -1,10 +1,12 @@
 import * as type from "../Constants/Auth";
 
 const UserInfor = localStorage.getItem("UserInfor");
+const token = localStorage.getItem("token");
 const initialState = {
   UserInfor: UserInfor ? JSON.parse(UserInfor) : null,
   loading: false,
   error: false,
+  token: token ? JSON.parse(token) : null,
 };
 
 const Auth = (state = initialState, action) => {
@@ -16,6 +18,7 @@ const Auth = (state = initialState, action) => {
       return {
         ...state,
         UserInfor: action.payload.data,
+        token: action.payload.token,
         loading: false,
         error: false,
       };
@@ -26,6 +29,7 @@ const Auth = (state = initialState, action) => {
     case type.LOGOUT_USER: {
       return { ...state, UserInfor: null, loading: false, error: false };
     }
+
     default:
       return state;
   }

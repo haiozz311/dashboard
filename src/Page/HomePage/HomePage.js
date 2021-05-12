@@ -1,9 +1,10 @@
 import React from 'react'
+import MenuHeader from '../../Components/User/MenuHeader'
 
 export default function HomePage() {
   return (
     <div>
-      hello
+      <MenuHeader />
     </div>
   )
 }

@@ -29,7 +29,7 @@ export default function BasicTable() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllUserAction());
+    // dispatch(getAllUserAction());
   }, [dispatch]);
   const { ListUser, loading } = useSelector((state) => state.UserListReducer);
 
