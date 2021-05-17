@@ -11,7 +11,6 @@ export default function OrderPage() {
 
   return (
     <div>
-      <div>{JSON.stringify(orders)}</div>
       <div>
         {orders?.map((item) =>
           item?.items?.map((item1) => (

@@ -251,7 +251,7 @@ export default function ListCategory() {
                 >
                   <option value="">type</option>
                   <option value="store">store</option>
-                  <option value="product">product</option>
+                  {/* <option value="product">product</option> */}
                   <option value="page">page</option>
                 </select>
               </Col>
@@ -313,7 +313,7 @@ export default function ListCategory() {
                 >
                   <option value="">type</option>
                   <option value="store">store</option>
-                  <option value="product">product</option>
+                  {/* <option value="product">product</option> */}
                   <option value="page">page</option>
                 </select>
               </Col>

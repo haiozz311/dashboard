@@ -86,6 +86,34 @@ const AddressReducer = (state = initialState, action) => {
     case type.ADD_USER_ORDER_FAIL: {
       return { ...state, loading: false, error: true };
     }
+    case type.UPDATE_ORDER_REQUEST: {
+      return { ...state, loading: true, error: false };
+    }
+    case type.UPDATE_ORDER_SUCCESS: {
+      return {
+        ...state,
+        orders: action?.payload?.orders,
+        loading: false,
+        error: false,
+      };
+    }
+    case type.UPDATE_ORDER_FAIL: {
+      return { ...state, loading: false, error: true };
+    }
+    case type.GET_USER_ORDER_DETAILS_REQUEST: {
+      return { ...state, loading: true, error: false };
+    }
+    case type.GET_USER_ORDER_DETAILS_SUCCESS: {
+      return {
+        ...state,
+        orderDetails: action?.payload?.orders,
+        loading: false,
+        error: false,
+      };
+    }
+    case type.GET_USER_ORDER_DETAILS_FAIL: {
+      return { ...state, loading: false, error: true };
+    }
 
     default:
       return { ...state };

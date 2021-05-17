@@ -6,6 +6,7 @@ import Theme_setting_wrapper from "../../Components/Dashboard/Theme_setting_wrap
 import { useSelector, useDispatch } from "react-redux";
 import { getAllOrder } from "../../Redux/Actions/Address";
 import "./style.css";
+import { updateOrder } from "../../Redux/Actions/Address";
 
 export default function Order() {
   const dispatch = useDispatch();
@@ -15,12 +16,12 @@ export default function Order() {
     dispatch(getAllOrder());
   }, []);
 
-  const onOrderUpdate = (orderId) => {
+  const onOrderUpdate = (userId) => {
     const payload = {
-      orderId,
+      userId,
       type,
     };
-    // dispatch(updateOrder(payload));
+    dispatch(updateOrder(payload));
   };
 
   const formatDate = (date) => {
@@ -130,9 +131,7 @@ export default function Order() {
                   boxSizing: "border-box",
                 }}
               >
-                <button
-                // onClick={() => onOrderUpdate(orderItem._id)}
-                >
+                <button onClick={() => onOrderUpdate(orderItem.user)}>
                   confirm
                 </button>
               </div>

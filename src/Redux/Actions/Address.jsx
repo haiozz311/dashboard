@@ -162,3 +162,24 @@ export const getAllOrder = () => {
       });
   };
 };
+
+export const updateOrder = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: type.UPDATE_ORDER_REQUEST });
+    try {
+      const res = await axios.post("api/updateOrder", payload);
+      if (res.status === 201) {
+        dispatch({ type: type.UPDATE_ORDER_SUCCESS });
+        dispatch(getAllOrder());
+      } else {
+        const { error } = res.data;
+        dispatch({
+          type: type.UPDATE_ORDER_FAIL,
+          payload: { error },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
