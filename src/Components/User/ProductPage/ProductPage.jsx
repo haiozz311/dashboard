@@ -20,8 +20,7 @@ export default function ProductPage(props) {
   console.log("ListProductPage", ListProductPage.page);
   return (
     <div>
-      {/* {JSON.stringify(ListProductPage)} */}
-      <h3>{ListProductPage.title}</h3>
+      <h3>{ListProductPage?.page?.title}</h3>
 
       <Carousel renderThumbs={() => {}}>
         {ListProductPage?.page?.banners &&

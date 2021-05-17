@@ -97,3 +97,30 @@ export const getProductPageAction = (payload) => {
       });
   };
 };
+
+export const getProductByIdAction = (payload) => {
+  console.log("payload", payload);
+  const { ProductId } = payload.params;
+  return (dispatch) => {
+    dispatch({
+      type: type.GET_PRODUCT_BY_ID_REQUEST,
+    });
+    axios
+      .get(`api/getProductById/${ProductId}`)
+      .then((result) => {
+        console.log("result", result);
+        dispatch({
+          type: type.GET_PRODUCT__BY_ID_SUCCESS,
+          payload: {
+            data: result.data,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: type.GET_PRODUCT_BY_ID_FAIL,
+          error,
+        });
+      });
+  };
+};

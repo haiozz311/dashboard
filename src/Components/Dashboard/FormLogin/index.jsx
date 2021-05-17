@@ -35,13 +35,11 @@ export default function FormLogin() {
     },
     resolver: yupResolver(schema),
   });
+  const { UserInfor, loading, error } = useSelector((state) => state.Auth);
   const dispatch = useDispatch();
   const handleSubmit = async (values) => {
     await dispatch(loginAction(values));
   };
-
-
-  const { UserInfor, loading, error } = useSelector((state) => state.Auth);
 
   const { enqueueSnackbar } = useSnackbar();
   const handleShownotistackError = (message) => {

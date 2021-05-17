@@ -13,6 +13,11 @@ import Product from './Page/Product'
 import Order from './Page/Order'
 import Page from './Page/NewPage/NewPage.jsx'
 import ProductListPage from "./Components/User/ProductListPage/ProductListPage";
+import ProductDetailPage from "./Components/User/ProductDetailPage/ProductDetailPage";
+import CartPage from "./Components/User/CartPage/CartPage";
+import Checkout from "./Components/User/Checkout/Checkout";
+import OrderPage from "./Components/User/OrderPage/OrderPage";
+
 
 function App() {
   return (
@@ -22,13 +27,20 @@ function App() {
       <Route path='/register' component={Register} />
 
       <AdminRoute exact path="/dashboard" component={Admin} />
-      <AdminRoute exact path="/dashboard/user" component={User} />
-      <AdminRoute exact path="/dashboard/category" component={Category} />
-      <AdminRoute exact path="/dashboard/page" component={Page} />
-      <AdminRoute exact path="/dashboard/product" component={Product} />
-      <AdminRoute exact path="/dashboard/order" component={Order} />
+      <AdminRoute path="/dashboard/user" component={User} />
+      <AdminRoute path="/dashboard/category" component={Category} />
+      <AdminRoute path="/dashboard/page" component={Page} />
+      <AdminRoute path="/dashboard/product" component={Product} />
+      <AdminRoute path="/dashboard/order" component={Order} />
       <UserRoute exact path="/" component={Home} />
+
+
+      <UserRoute path="/cart" component={CartPage} />
+      <UserRoute path="/checkout" component={Checkout} />
+      <UserRoute path="/account/order" component={OrderPage} />
+      <UserRoute path="/:productSlug/:ProductId" component={ProductDetailPage} />
       <UserRoute path="/:slug" component={ProductListPage} />
+
     </>
   );
 }

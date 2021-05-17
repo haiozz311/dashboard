@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getProductPageAction,getProductByslugAction } from "../../../Redux/Actions/Product";
+import {
+  getProductPageAction,
+  getProductByslugAction,
+} from "../../../Redux/Actions/Product";
+import { Link } from "react-router-dom";
 
 export default function ProductStore(props) {
   const [priceRange, setPriceRange] = useState({
-    under5K: 5000,
-    under10K: 10000,
-    under15K: 15000,
-    under20K: 20000,
-    under30K: 30000,
+    under5k: 5000,
+    under10k: 10000,
+    under15k: 15000,
+    under20k: 20000,
+    under30k: 30000,
   });
   const { match } = props;
   const dispatch = useDispatch();
@@ -24,16 +28,20 @@ export default function ProductStore(props) {
   return (
     <>
       {Object.keys(productsByPrice).map((key, index) => (
-        <div className="card">
+        <div className="card" key={index}>
           <div className="cardHeader">
             <div>
-              {props.match.params.slug} {key}
+              {props.match.params.slug} under {priceRange[key]}
             </div>
             <button>View all</button>
           </div>
           <div className="card__content">
             {productsByPrice[key].map((item, index) => (
-              <div className="productContainer">
+              <Link
+                to={`/${item.slug}/${item._id}`}
+                className="productContainer"
+                key={index}
+              >
                 <div className="productImgContainer">
                   {item.productPictures[0]?.img ? (
                     <img
@@ -50,7 +58,7 @@ export default function ProductStore(props) {
                   </div>
                 </div>
                 <div className="productPrice">{item.price}</div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

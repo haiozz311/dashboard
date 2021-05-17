@@ -14,6 +14,19 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import MoreIconVer from "@material-ui/icons/More";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
+import FormLogin from "../../Dashboard/FormLogin";
+import FormRegister from "../../Dashboard/FormRegister";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutAction } from "../../../Redux/Actions/auth";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -75,12 +88,98 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  buttonLogin: {
+    color: "white",
+    borderColor: "none",
+  },
+  name: {
+    lineHeight: "50px",
+    color: "white",
+  },
 }));
-export default function ToolbarComponent() {
+export default function ToolbarComponent({ openDrawerHandler }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
+
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
   const classes = useStyles();
   const [anchorEl, setAchorEl] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
+  const { UserInfor } = useSelector((state) => state.Auth);
+  //dialog
+  const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [register, setRegister] = useState(false);
+
+  const handleClickOpenRegister = () => {
+    setRegister(true);
+  };
+
+  const handleCloseRegister = () => {
+    setRegister(false);
+  };
+
+  const dialogLogin = () => {
+    return (
+      <div>
+        <Dialog
+          open={open}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">Login</DialogTitle>
+          <DialogContent>
+            <FormLogin />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  };
+  const dialogRegister = () => {
+    return (
+      <div>
+        <Dialog
+          open={register}
+          keepMounted
+          onClose={handleCloseRegister}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">Register</DialogTitle>
+          <DialogContent>
+            <FormRegister />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseRegister} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  };
+  //
   const handleProfileMenuOpen = (event) => {
     setAchorEl(event.currentTarget);
   };
@@ -95,9 +194,13 @@ export default function ToolbarComponent() {
   };
 
   const handleMobileMenuOpen = (event) => {
+    console.log("currentTarget", event.currentTarget);
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleLogOut = () => {
+    dispatch(logoutAction());
+  };
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -157,7 +260,7 @@ export default function ToolbarComponent() {
       </MenuItem>
     </Menu>
   );
-
+  const token = localStorage.getItem("token");
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -167,7 +270,7 @@ export default function ToolbarComponent() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            // onClick={openDrawerHandler}
+            onClick={openDrawerHandler}
           >
             <MenuIcon />
           </IconButton>
@@ -188,28 +291,85 @@ export default function ToolbarComponent() {
             />
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
+          {token ? (
+            <div className={classes.sectionDesktop}>
+              {/* <IconButton aria-label="show 4 new mails" color="inherit"> */}
+              <div>
+                <Button
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick1}
+                  className={classes.name}
+                >
+                  {UserInfor && UserInfor.fullName}
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl1}
+                  keepMounted
+                  open={Boolean(anchorEl1)}
+                  onClose={handleClose1}
+                >
+                  <MenuItem onClick={handleClose1}>
+                    {UserInfor && UserInfor.fullName}
+                  </MenuItem>
+                  <MenuItem onClick={handleClose1}>My Profile</MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      history.push(`/account/order`);
+                    }}
+                  >
+                    Orders
+                  </MenuItem>
+                  <MenuItem onClick={handleClose1}>Wishlist</MenuItem>
+                  <MenuItem onClick={handleClose1}>Notifications</MenuItem>
+                  <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                </Menu>
+              </div>
+              {/* </IconButton> */}
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge color="secondary">
+                  <MoreIconVer />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
+          ) : (
+            <div className={classes.sectionDesktop}>
+              <Button className={classes.buttonLogin} onClick={handleClickOpen}>
+                Login
+              </Button>
+              <Button
+                className={classes.buttonLogin}
+                onClick={handleClickOpenRegister}
+              >
+                Register
+              </Button>
+            </div>
+          )}
+
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -223,6 +383,8 @@ export default function ToolbarComponent() {
           </div>
         </Toolbar>
       </AppBar>
+      {dialogLogin()}
+      {dialogRegister()}
       {renderMobileMenu}
       {renderMenu}
     </div>

@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import "./menuHeader.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoryAction } from "../../../Redux/Actions/Category";
+import { useHistory } from "react-router-dom";
 
 export default function MenuHeader() {
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCategoryAction());
@@ -15,11 +17,20 @@ export default function MenuHeader() {
       categories.push(
         <li key={category.name}>
           {category.parentId ? (
-            <a
-              href={`/${category.slug}?cid=${category._id}&typeProduct=${category.type}`}
+            // <a
+            //   href={`/${category.slug}?cid=${category._id}&typeProduct=${category.type}`}
+            // >
+            //   {category.name}
+            // </a>
+            <p className="title_child"
+              onClick={() => {
+                history.push(
+                  `/${category.slug}?cid=${category._id}&typeProduct=${category.type}`
+                );
+              }}
             >
               {category.name}
-            </a>
+            </p>
           ) : (
             <span>{category.name}</span>
           )}

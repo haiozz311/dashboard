@@ -20569,7 +20569,7 @@ code {
 /* Badges */
 .badge {
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1;
   padding: .375rem .5625rem;
   font-weight: normal;
@@ -25499,7 +25499,7 @@ dl li {
 }
 
 .email-wrapper .mail-sidebar .menu-bar .online-status .status:after {
-  font-size: 12px;
+  font-size: 16px;
   color: #2e383e;
   margin: -5px 0 0 18px;
 }

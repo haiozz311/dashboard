@@ -1,6 +1,5 @@
 import * as type from "../Constants/Auth";
-import axios from //  { setToken }
-"../../Utils/AxiosClient";
+import axios from "../../Utils/AxiosClient"; //  { setToken }
 import jwt_decode from "jwt-decode";
 export const loginAction = (values) => {
   return (dispatch) => {

@@ -51,6 +51,9 @@
   padding: 3px 0;
   display: block;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 16px;
   color: #707070;
 } 
+.title_child{
+  cursor: pointer;
+}

@@ -7,6 +7,8 @@ import CategoryReducer from "./CategoryReducer";
 import OrderReducer from "./OrderReducer";
 import SlugReducer from "./SlugReducer";
 import PageReducer from "./PageReducer";
+import CartReducer from "./CartReducer";
+import AddressReducer from "./AddressReducer";
 const rootReducer = combineReducers({
   Auth: Auth,
   UserListReducer: UserListReducer,
@@ -16,5 +18,7 @@ const rootReducer = combineReducers({
   SlugReducer: SlugReducer,
   OrderReducer: OrderReducer,
   PageReducer: PageReducer,
+  CartReducer: CartReducer,
+  AddressReducer: AddressReducer,
 });
 export default rootReducer;
