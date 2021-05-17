@@ -11,10 +11,10 @@ export default function OrderPage() {
 
   return (
     <div>
-      {/* <div>{JSON.stringify(orders)}</div> */}
+      <div>{JSON.stringify(orders)}</div>
       <div>
-        {orders.map((item) =>
-          item.items.map((item1) => (
+        {orders?.map((item) =>
+          item?.items?.map((item1) => (
             <>
               <img
                 src={`http://localhost:5000/public/${item1.productId.productPictures[0].img}`}

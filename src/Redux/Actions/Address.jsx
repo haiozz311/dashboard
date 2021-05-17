@@ -139,3 +139,26 @@ export const getOrder = (payload) => {
     }
   };
 };
+
+export const getAllOrder = () => {
+  return (dispatch) => {
+    dispatch({
+      type: type.GET_ALL_ORDER_REQUEST,
+    });
+    axios
+      .get("api/getCustomerOrders")
+      .then((result) => {
+        dispatch({
+          type: type.GET_ALL_ORDER_SUCCESS,
+          payload: {
+            data: result.data,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: type.GET_ALL_ORDER_FAIL,
+        });
+      });
+  };
+};
